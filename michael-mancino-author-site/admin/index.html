@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Michael Mancino</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background: #1a1a1a;
+            border: 2px solid #D4AF37;
+            padding: 40px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            color: #D4AF37;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #D4AF37;
+            font-weight: 500;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #D4AF37;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #D4AF37;
+            color: #0a0a0a;
+            border: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #c49b2f;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: #ff4444;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link a:hover {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>ADMIN ACCESS</h1>
+        <p class="subtitle">Blog Management System</p>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required autofocus>
+            </div>
+            
+            <button type="submit" class="btn">LOGIN</button>
+            
+            <p class="error" id="error">Incorrect password. Access denied.</p>
+        </form>
+
+        <div class="back-link">
+            <a href="../index.html">← Back to Site</a>
+        </div>
+    </div>
+
+    <script>
+        // CHANGE THIS PASSWORD TO YOUR OWN
+        const ADMIN_PASSWORD = 'your_secure_password_here';
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('error');
+            
+            if (password === ADMIN_PASSWORD) {
+                // Store auth in sessionStorage
+                sessionStorage.setItem('adminAuth', 'true');
+                window.location.href = 'editor.html';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('password').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
