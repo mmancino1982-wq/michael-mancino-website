@@ -23,9 +23,9 @@ exports.handler = async (event, context) => {
     }
 
     // Mailchimp credentials
-    const MAILCHIMP_API_KEY = 'e5935156d505f8987d61b045a4183389-us20';
-    const AUDIENCE_ID = '8169af8abf';
-    const SERVER_PREFIX = 'us20';
+   const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY;
+const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
+const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX;
 
     // Create MD5 hash of lowercase email (Mailchimp requirement)
     const subscriberHash = crypto

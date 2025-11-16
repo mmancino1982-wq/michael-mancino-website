@@ -161,27 +161,37 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">MICHAEL MANCINO</div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="book.html">The Book</a></li>
-                <li><a href="#newsletter">Newsletter</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="container">
+        <div class="nav-brand">MICHAEL MANCINO</div>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="book.html">The Book</a></li>
+            <li><a href="index.html#newsletter">Newsletter</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
+                <div class="countdown-container">
+    <div class="countdown-label">LAUNCHING IN</div>
+    <div class="countdown-display" id="countdown">
+        <span id="days">00</span> DAYS :
+        <span id="hours">00</span> HRS :
+        <span id="minutes">00</span> MIN
+    </div>
+    <div class="countdown-date">January 1, 2026</div>
+</div>
                 <h1 class="hero-title">BROKEN CREED</h1>
                 <p class="hero-tagline">When the darkness you left in a war zone follows you home, the only way forward is straight through Hell itself.</p>
                 <p class="hero-subtitle">A supernatural thriller by Michael Mancino</p>
@@ -294,5 +304,23 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+function updateCountdown() {
+    const launchDate = new Date('January 1, 2026 00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = launchDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+}
+
+updateCountdown();
+setInterval(updateCountdown, 60000); // Update every minute
+</script>
 </body>
 </html>

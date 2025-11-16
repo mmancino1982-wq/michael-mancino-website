@@ -777,3 +777,33 @@ a:hover {
         text-align: center;
     }
 }
+.countdown-container {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-display {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-white);
+    letter-spacing: 2px;
+}
+
+.countdown-display span {
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.countdown-date {
+    font-size: 0.9rem;
+    color: var(--color-light-gray);
+    margin-top: 0.5rem;
+}
