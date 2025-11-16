@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Access - BROKEN CREED</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .blog-gate {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .gate-container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--color-dark-gray);
+            border: 2px solid var(--color-medium-gray);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .gate-container h1 {
+            font-family: var(--font-display);
+            color: var(--color-accent);
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .gate-container p {
+            color: var(--color-light-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .access-form {
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-medium-gray);
+            border: 1px solid var(--color-light-gray);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .btn-verify {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--color-accent);
+            background-color: var(--color-accent);
+            color: var(--color-black);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .btn-verify:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+        }
+
+        .btn-verify:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .message {
+            padding: 1rem;
+            margin-top: 1rem;
+            border-left: 4px solid;
+            display: none;
+        }
+
+        .message.error {
+            background: #2a1a1a;
+            border-color: #ff4444;
+            color: #ff8888;
+            display: block;
+        }
+
+        .message.success {
+            background: #1a2a1a;
+            border-color: #44ff44;
+            color: #88ff88;
+            display: block;
+        }
+
+        .subscribe-link {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-medium-gray);
+        }
+
+        .subscribe-link p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .subscribe-link a {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">BROKEN CREED</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="book.html">The Book</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="blog-gate">
+        <div class="gate-container">
+            <h1>Subscriber Access Only</h1>
+            <p>The BROKEN CREED blog contains behind-the-scenes content, writing insights, and story elements reserved for newsletter subscribers.</p>
+            <p><strong>Already subscribed?</strong> Enter your email below to access the blog.</p>
+
+            <form class="access-form" id="verifyForm">
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        placeholder="Enter your email address" 
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn-verify" id="verifyBtn">
+                    Verify Access
+                </button>
+                <div class="message" id="message"></div>
+            </form>
+
+            <div class="subscribe-link">
+                <p>Not subscribed yet?</p>
+                <p><a href="index.html#newsletter">Join the newsletter</a> to get access to the blog plus launch updates, exclusive content, and early access to Book 2 announcements.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michael Mancino. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if already verified
+        if (sessionStorage.getItem('blogAccess') === 'granted') {
+            window.location.href = 'blog-content.html';
+        }
+
+        document.getElementById('verifyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim();
+            const verifyBtn = document.getElementById('verifyBtn');
+            const messageDiv = document.getElementById('message');
+
+            // Reset message
+            messageDiv.className = 'message';
+            messageDiv.textContent = '';
+
+            // Disable button
+            verifyBtn.disabled = true;
+            verifyBtn.textContent = 'Verifying...';
+
+            try {
+                const response = await fetch('/.netlify/functions/verify-subscriber', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+
+                if (data.verified) {
+                    // Grant access
+                    sessionStorage.setItem('blogAccess', 'granted');
+                    sessionStorage.setItem('subscriberEmail', email);
+                    
+                    messageDiv.className = 'message success';
+                    messageDiv.textContent = 'Access granted! Redirecting...';
+
+                    setTimeout(() => {
+                        window.location.href = 'blog-content.html';
+                    }, 1000);
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.textContent = 'Email not found in subscriber list. Please subscribe first.';
+                    verifyBtn.disabled = false;
+                    verifyBtn.textContent = 'Verify Access';
+                }
+
+            } catch (error) {
+                console.error('Verification error:', error);
+                messageDiv.className = 'message error';
+                messageDiv.textContent = 'Error verifying email. Please try again.';
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = 'Verify Access';
+            }
+        });
+    </script>
+</body>
+</html>
