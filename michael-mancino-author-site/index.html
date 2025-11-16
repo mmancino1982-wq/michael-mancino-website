@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Michael Mancino - Author of Broken Creed. Former Army combat medic. Testimony disguised as thriller. Dark supernatural fiction grounded in reality.">
+    <meta name="keywords" content="Michael Mancino, Broken Creed, thriller, supernatural, military fiction, noir, horror">
+    <meta name="author" content="Michael Mancino">
+    <title>Michael Mancino | Author of Broken Creed</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Newsletter Box Styles */
+        .newsletter-section {
+            background-color: var(--color-dark-gray);
+            padding: var(--spacing-xl) 0;
+            border-top: 2px solid var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .newsletter-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-container h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .newsletter-container p {
+            font-size: 1.2rem;
+            color: var(--color-light-gray);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .newsletter-form {
+            background-color: var(--color-medium-gray);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--color-accent);
+            margin-top: var(--spacing-md);
+        }
+
+        .newsletter-form h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-row {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 0.75rem;
+            background-color: var(--color-dark-gray);
+            border: 1px solid var(--color-light-gray);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        .form-row input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            color: var(--color-black);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: transparent;
+            color: var(--color-accent);
+        }
+
+        .privacy-note {
+            font-size: 0.9rem;
+            color: var(--color-light-gray);
+            font-style: italic;
+            margin-top: var(--spacing-sm);
+        }
+
+        /* Pre-order CTA Box */
+        .preorder-box {
+            background: linear-gradient(135deg, var(--color-blood) 0%, #5a0d0d 100%);
+            padding: var(--spacing-lg);
+            text-align: center;
+            margin-top: var(--spacing-md);
+            border: 2px solid var(--color-accent);
+        }
+
+        .preorder-box h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .preorder-box p {
+            font-size: 1.2rem;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .preorder-box .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background-color: var(--color-black);
+            border: 2px solid var(--color-black);
+            color: var(--color-white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .preorder-box .btn:hover {
+            background-color: transparent;
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        @media (max-width: 640px) {
+            .form-row {
+                flex-direction: column;
+            }
+
+            .newsletter-container h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">MICHAEL MANCINO</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="book.html">The Book</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">BROKEN CREED</h1>
+                <p class="hero-tagline">When the darkness you left in a war zone follows you home, the only way forward is straight through Hell itself.</p>
+                <p class="hero-subtitle">A supernatural thriller by Michael Mancino</p>
+                <div class="hero-cta">
+                    <a href="https://www.amazon.com/dp/B0G26ZB42V" class="btn btn-primary" target="_blank">Pre-Order Now</a>
+                    <a href="#newsletter" class="btn btn-secondary">Get Updates</a>
+                </div>
+                <p class="launch-date">Launches January 1, 2026</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/Broken_Creed_Cover_Ebook (1) (1) (1).png" alt="Broken Creed Book Cover" class="book-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section (Primary CTA) -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="container newsletter-container">
+            <h2>Join the Launch List</h2>
+            <p>Get exclusive updates on the Broken Creed launch, behind-the-scenes content about the writing process, and early access to Book 2.</p>
+            
+            <!-- MAILCHIMP FORM -->
+            <div class="newsletter-form">
+                <h3>Stay Connected</h3>
+                <form action="https://michael-mancino.us20.list-manage.com/subscribe/post?u=31ce689a4834f0fa9536a5aa3&amp;id=8169af8abf&amp;f_id=007bccedf0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <div class="form-row">
+                        <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Your Email Address" required>
+                    </div>
+                    <!-- Bot protection field (hidden) -->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_31ce689a4834f0fa9536a5aa3_8169af8abf" tabindex="-1" value="">
+                    </div>
+                    <button type="submit" name="subscribe" id="mc-embedded-subscribe">SIGN UP FOR UPDATES</button>
+                    <p class="privacy-note">No spam. Unsubscribe anytime. Your email stays private.</p>
+                </form>
+            </div>
+            <!-- END MAILCHIMP FORM -->
+
+            <!-- Pre-Order CTA Box -->
+            <div class="preorder-box">
+                <h3>Available for Pre-Order Now</h3>
+                <p>Secure your copy today. Launches January 1, 2026.</p>
+                <a href="https://www.amazon.com/dp/B0G26ZB42V" class="btn" target="_blank">PRE-ORDER ON AMAZON</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Intro Section -->
+    <section class="intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Testimony Disguised as Fiction</h2>
+                <p>Some darkness is real. Some experiences defy explanation. This story was written by a former Army combat medic who deployed to Iraq and came back marked by something he couldn't see but couldn't escape.</p>
+                <p class="intro-emphasis">This isn't just a thriller. It's testimony.</p>
+                <a href="about.html" class="link-arrow">Learn more about the author →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Teaser -->
+    <section class="teaser">
+        <div class="container">
+            <div class="teaser-grid">
+                <div class="teaser-text">
+                    <h2>What happens when corporate espionage becomes cosmic horror?</h2>
+                    <p>Jonah Creed is a former Army HUMINT collector who spent years gathering intelligence in Iraq—until an IED blast killed him, gave him a tour of Hell, and brought him back marked by something he can neither see nor escape.</p>
+                    <p>Now working as a private investigator in Houston, Jonah is hired to investigate suspected corporate espionage. What begins as a straightforward case spirals into something far darker—a global conspiracy, dimensional breaches, and the same warped symbol he saw scrawled in blood in a Fallujah ritual chamber twenty years ago.</p>
+                    <a href="book.html" class="btn btn-primary">Discover the Story</a>
+                </div>
+                <div class="teaser-quote">
+                    <blockquote>
+                        <p>"This is grounded tactical noir that doesn't pull punches—a story about what happens when the darkness you thought you left behind in a war zone follows you home."</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>MICHAEL MANCINO</h3>
+                    <p>Author of Broken Creed</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="book.html">The Book</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://x.com/MMancinoAuthor" target="_blank">X/Twitter</a>
+                        <a href="https://instagram.com/MMancinoAuthor" target="_blank">Instagram</a>
+                        <a href="https://tiktok.com/@mmancinoauthor" target="_blank">TikTok</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michael Mancino. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
