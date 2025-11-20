@@ -5,10 +5,21 @@ const crypto = require('crypto');
 const https = require('https');
 
 exports.handler = async (event, context) => {
+   const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  };
+
+    // Handle preflight
+if (event.httpMethod === 'OPTIONS') {
+  return { statusCode: 200, headers, body: '' };
+}
   // Only allow POST requests
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers,
       body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
@@ -19,6 +30,7 @@ exports.handler = async (event, context) => {
     if (!email) {
       return {
         statusCode: 400,
+         headers,
         body: JSON.stringify({ error: 'Email is required' })
       };
     }
@@ -69,6 +81,7 @@ const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX;
     if (response.statusCode === 200 && response.data.status === 'subscribed') {
       return {
         statusCode: 200,
+         headers,
         body: JSON.stringify({ 
           verified: true,
           message: 'Access granted'
@@ -77,6 +90,7 @@ const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX;
     } else {
       return {
         statusCode: 200,
+           headers,
         body: JSON.stringify({ 
           verified: false,
           message: 'Email not found in subscriber list'
@@ -88,6 +102,7 @@ const SERVER_PREFIX = process.env.MAILCHIMP_SERVER_PREFIX;
     console.error('Error verifying subscriber:', error);
     return {
       statusCode: 500,
+         headers,
       body: JSON.stringify({ 
         error: 'Server error',
         verified: false
