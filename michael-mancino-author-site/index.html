@@ -156,6 +156,43 @@
             border-color: var(--color-white);
         }
 
+        /* Platform Logo Buttons */
+        .platform-logos {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-logo-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(218, 165, 32, 0.1);
+            border: 2px solid var(--color-accent);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .platform-logo-link:hover {
+            background-color: rgba(218, 165, 32, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .platform-logo-link img {
+            height: 30px;
+            width: auto;
+            display: block;
+        }
+
+        .cta-with-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         @media (max-width: 640px) {
             .form-row {
                 flex-direction: column;
@@ -163,6 +200,11 @@
 
             .newsletter-container h2 {
                 font-size: 2rem;
+            }
+            
+            .platform-logos {
+                flex-direction: column;
+                gap: 0.75rem;
             }
         }
     </style>
@@ -205,8 +247,22 @@
                 <p class="hero-tagline">When the darkness you left in a war zone follows you home, the only way forward is straight through Hell itself.</p>
                 <p class="hero-subtitle">A military supernatural thriller by Michael Mancino | Former Army Combat Medic</p>
                 <div class="hero-cta">
-                    <a href="https://www.amazon.com/dp/B0G26ZB42V" class="btn btn-primary" target="_blank">Pre-Order Now</a>
-                    <a href="#newsletter" class="btn btn-secondary">Get Updates</a>
+                    <div class="cta-with-logo">
+                        <a href="https://www.amazon.com/dp/B0G26ZB42V" class="btn btn-primary" target="_blank">Pre-Order Now</a>
+                        <div class="platform-logos">
+                            <a href="https://www.goodreads.com/book/show/243946845-broken-creed" class="platform-logo-link" target="_blank" title="Add to Goodreads">
+                                <img src="https://www.goodreads.com/images/layout/goodreads_logo_140.png" alt="Goodreads">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cta-with-logo">
+                        <a href="#newsletter" class="btn btn-secondary">Get Updates</a>
+                        <div class="platform-logos">
+                            <a href="https://booksprout.co/reviewer/review-copy/view/245418/broken-creed" class="platform-logo-link" target="_blank" title="Review on BookSprout">
+                                <img src="https://booksprout.co/assets/images/logo-light.png" alt="BookSprout">
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <p class="launch-date">Launches January 1, 2026</p>
             </div>
