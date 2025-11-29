@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTEL BULLETIN: Pishacha - BROKEN CREED</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        .blog-post-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .post-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .post-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-date {
+            color: var(--color-light-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .post-content {
+            color: var(--color-light-gray);
+            line-height: 1.8;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .series-intro {
+            font-style: italic;
+            color: var(--color-light-gray);
+            border-left: 3px solid var(--color-accent);
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* === SCANNED DOCUMENT STYLING === */
+        .scanned-document-wrapper {
+            perspective: 1000px;
+            margin: 2rem 0;
+        }
+
+        .scanned-document {
+            background: 
+                /* Noise/grain overlay */
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+                /* Paper texture gradient */
+                linear-gradient(to bottom, #f4f1ea 0%, #e8e4d9 50%, #f0ece3 100%);
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 
+                0 1px 1px rgba(0,0,0,0.12),
+                0 2px 2px rgba(0,0,0,0.12),
+                0 4px 4px rgba(0,0,0,0.12),
+                0 8px 8px rgba(0,0,0,0.12),
+                0 16px 16px rgba(0,0,0,0.12);
+            transform: rotate(-0.5deg);
+            border: 1px solid #d4cfc4;
+        }
+
+        /* Aged paper edges */
+        .scanned-document::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid rgba(139, 119, 101, 0.3);
+            pointer-events: none;
+        }
+
+        /* Coffee stain - subtle */
+        .scanned-document::after {
+            content: '';
+            position: absolute;
+            bottom: 60px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(ellipse at center, 
+                rgba(139, 90, 43, 0.08) 0%, 
+                rgba(139, 90, 43, 0.04) 40%, 
+                transparent 70%);
+            border-radius: 50%;
+            transform: rotate(15deg);
+        }
+
+        /* Fold line */
+        .fold-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                rgba(0,0,0,0.03) 20%, 
+                rgba(0,0,0,0.05) 50%, 
+                rgba(0,0,0,0.03) 80%, 
+                transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Classification stamp */
+        .classification-stamp {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: rgba(180, 40, 40, 0.6);
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transform: rotate(12deg);
+            border: 2px solid rgba(180, 40, 40, 0.5);
+            padding: 4px 10px;
+            text-transform: uppercase;
+        }
+
+        /* Document content styling */
+        .document-content {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            color: #1a1a1a;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .document-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #8b7765;
+        }
+
+        .document-header h2 {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: #1a1a1a;
+            margin: 0 0 0.25rem 0;
+            text-transform: uppercase;
+        }
+
+        .document-header .classification {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #8b0000;
+        }
+
+        .document-meta {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #a89f91;
+        }
+
+        .document-meta p {
+            margin: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .document-meta strong {
+            color: #2a2a2a;
+            min-width: 180px;
+            display: inline-block;
+        }
+
+        .document-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .document-section h3 {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 0.95rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #2a2a2a;
+            margin: 0 0 0.75rem 0;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        .document-section p {
+            margin: 0.5rem 0;
+            text-align: justify;
+        }
+
+        .document-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #8b7765;
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        .document-addendum {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.03);
+            border-left: 3px solid #8b7765;
+        }
+
+        .document-addendum .addendum-label {
+            font-weight: bold;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-addendum p {
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Redacted text effect */
+        .redacted {
+            background: #1a1a1a;
+            color: #1a1a1a;
+            padding: 0 4px;
+            user-select: none;
+        }
+
+        /* === ATTACHMENTS SECTION === */
+        .attachments-section {
+            margin-top: 3rem;
+        }
+
+        .attachments-header {
+            background: linear-gradient(to right, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            border: 2px solid var(--color-accent);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .attachments-header::before {
+            content: '//';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-accent);
+            font-family: 'Special Elite', monospace;
+            font-size: 1.5rem;
+        }
+
+        .attachments-header h3 {
+            font-family: 'Special Elite', 'Courier New', monospace;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--color-accent);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .attachments-header .subtext {
+            font-family: 'Special Elite', monospace;
+            font-size: 0.75rem;
+            color: var(--color-light-gray);
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        /* Media gallery */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .media-item {
+            position: relative;
+            background: #0a0a0a;
+            border: 1px solid var(--color-medium-gray);
+            overflow: hidden;
+        }
+
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .media-item .exhibit-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.85);
+            border: 1px solid var(--color-accent);
+            padding: 4px 10px;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .media-item .capture-info {
+            padding: 0.75rem;
+            background: #111;
+            font-family: 'Special Elite', monospace;
+            font-size: 0.75rem;
+            color: var(--color-light-gray);
+            border-top: 1px solid var(--color-medium-gray);
+        }
+
+        /* Full-width media item */
+        .media-item.full-width {
+            grid-column: span 2;
+        }
+
+        /* Back link */
+        .back-link {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-medium-gray);
+        }
+
+        .back-link a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--color-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .scanned-document {
+                padding: 1.5rem;
+                transform: rotate(0deg);
+            }
+
+            .media-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .media-item.full-width {
+                grid-column: span 1;
+            }
+
+            .classification-stamp {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="nav-brand">MICHAEL MANCINO</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../book.html">The Book</a></li>
+                <li><a href="../index.html#newsletter">Newsletter</a></li>
+                <li><a href="../blog.html" class="active">Blog</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="blog-post-container">
+        <div class="post-header">
+            <h1 class="post-title">Meet The Enemy: Pishacha</h1>
+            <p class="post-date">November 29, 2025</p>
+        </div>
+
+        <div class="post-content">
+            <p class="series-intro">
+                Welcome to INTEL BULLETIN — a series diving into the entities and characters that inhabit the world of The Broken Series. These aren't your typical horror monsters. They're drawn from real mythology, real folklore, real nightmares that humanity has been whispering about for millennia. First up: the flesh-eaters.
+            </p>
+
+            <p>
+                Every culture has stories about things that feed on the dead. Most people assume they're metaphors—ways to process grief, fear of mortality, warnings to respect burial rites. They're not metaphors. The following intelligence bulletin was compiled from network assets. Read it carefully.
+            </p>
+
+            <!-- THE SCANNED DOCUMENT -->
+            <div class="scanned-document-wrapper">
+                <div class="scanned-document">
+                    <div class="fold-line"></div>
+                    <span class="classification-stamp">Eyes Only</span>
+                    
+                    <div class="document-content">
+                        <div class="document-header">
+                            <h2>Network Intelligence Bulletin</h2>
+                            <p class="classification">CLASSIFICATION: OPERATOR EYES ONLY</p>
+                        </div>
+
+                        <div class="document-meta">
+                            <p><strong>SUBJECT:</strong> Pishacha</p>
+                            <p><strong>THREAT DESIGNATION:</strong> Class II Manifestation (Corporeal)</p>
+                            <p><strong>ORIGIN:</strong> Hindu/Buddhist Theological Framework</p>
+                            <p><strong>STATUS:</strong> Active Post-Breach</p>
+                            <p><strong>COMPILED BY:</strong> Oracle // Network Intelligence Division</p>
+                        </div>
+
+                        <div class="document-section">
+                            <h3>Physical Profile</h3>
+                            <p>Humanoid configuration. Height variable: 1.5 to 2.1 meters observed. Emaciated muscular structure with pronounced skeletal definition. Skin coloration ranges from necrotic gray to mottled charcoal depending on feeding cycle. Cranial structure elongated with prominent orbital ridges. Dentition: dual rows of needle-configuration teeth optimized for tearing flesh from bone.</p>
+                            <p>Eyes exhibit thermal luminescence in low-light conditions—red to amber spectrum. Hands terminate in elongated digits with keratinous claws measuring 5-8 centimeters. Spinal curvature suggests quadrupedal capability despite bipedal preference. Odor signature: decay, sulfur, burned meat.</p>
+                        </div>
+
+                        <div class="document-section">
+                            <h3>Behavioral Analysis</h3>
+                            <p>Primarily nocturnal. Demonstrates strong territorial behavior around cremation sites, battlefields, hospitals, and locations with high mortality density. Hunting pattern: patient stalking followed by rapid assault. Preferred prey: the dying, the grieving, the spiritually weakened.</p>
+                            <p>Documented capacity to induce sleep paralysis in targets prior to feeding. Victim reports consistent: pressure on chest, inability to move, entity observed in peripheral vision before full manifestation. Feeds on flesh but demonstrates particular interest in <span class="redacted">REDACTED</span> tissue. Will consume carrion but actively hunts living prey when available.</p>
+                            <p>Social structure: typically solitary, but post-breach observations indicate pack behavior emerging in high-density manifestation zones.</p>
+                        </div>
+
+                        <div class="document-section">
+                            <h3>Historical Context</h3>
+                            <p>Sanskrit texts dating to 1500 BCE document Pishacha activity. Consistent descriptions across Hindu, Buddhist, and Jain sources suggest reliable witness testimony rather than mythological embellishment. Ancient accounts describe them as "flesh-eaters who haunt cremation grounds" — accurate assessment.</p>
+                            <p>Traditional countermeasures include mantras (Maha Mrityunjaya demonstrated 34% efficacy in field tests), Neem leaves (irritant, not lethal), and specific ritual protections. Modern small arms effective for physical disruption but regeneration observed within <span class="redacted">REDACTED</span> minutes unless countermeasures applied.</p>
+                        </div>
+
+                        <div class="document-section">
+                            <h3>Threat Assessment</h3>
+                            <p>Individual Pishacha: manageable threat for trained operator with appropriate loadout. Pack configuration: significant danger requiring team response. Primary threat vectors: ambush predation, sleep paralysis incapacitation, psychological degradation of isolated personnel.</p>
+                            <p>Do not engage near active cremation or burial sites—territorial response escalates to swarming behavior. Do not engage while fatigued, grieving, or spiritually compromised—they sense weakness.</p>
+                            <p>Corporeal manifestation means conventional weapons achieve effect. Aim center mass, confirm kills, maintain spacing. They are fast. They are patient. They remember faces.</p>
+                        </div>
+
+                        <div class="document-section">
+                            <h3>Engagement Protocols</h3>
+                            <p>Refer to Network Operations Manual Section <span class="redacted">REDACTED</span> for detailed engagement procedures. Summary: maintain team integrity, employ overlapping fields of fire, designate spotter for flanking detection. Spiritual support assets recommended but not required for Class II threats.</p>
+                            <p>If sleep paralysis onset detected: do not panic. Controlled breathing. Focus on extremity movement. They feed on fear before they feed on flesh.</p>
+                        </div>
+
+                        <div class="document-footer">
+                            — END BULLETIN —
+                        </div>
+
+                        <div class="document-addendum">
+                            <p class="addendum-label">ADDENDUM // ORACLE:</p>
+                            <p>Historical nomenclature note: Western sources occasionally conflate Pishacha with "ghoul" or "zombie" classifications. This is taxonomically imprecise. They are neither undead nor formerly human. They are something older. Something that was here before we started naming things. Recommend updated terminology protocols. Recommend operators stop asking me if they're "basically zombies." They are not. Query rejected.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                Now you know what's waiting in the dark. Sleep well.
+            </p>
+
+            <!-- ATTACHMENTS SECTION -->
+            <div class="attachments-section">
+                <div class="attachments-header">
+                    <h3>Supplemental Imagery — Attached</h3>
+                    <p class="subtext">Source: Network Field Assets // Classification: Unredacted</p>
+                </div>
+
+                <div class="media-gallery">
+                    <!-- IMAGE 1: Sleep Paralysis / Bedroom -->
+                    <div class="media-item full-width">
+                        <span class="exhibit-label">Exhibit A</span>
+                        <img src="../images/blog/Pishacha1.png" alt="Pishacha manifestation post plague.">
+                        <div class="capture-info">
+                            Field Capture // Pandemic location: Black Plague // Origin: UNKNOWN // Location: [REDACTED] // Note: Medical teams were unable to prevent further spread, resulting in total loss of citizens and team due to PPE failure.
+                        </div>
+                    </div>
+
+                    <!-- IMAGE 2: Temple -->
+                    <div class="media-item">
+                        <span class="exhibit-label">Exhibit B</span>
+                        <img src="../images/blog/Pishacha2.png" alt="Pishacha in temple environment">
+                        <div class="capture-info">
+                            Field Capture // Pandemic location: Black Plague
+                        </div>
+                    </div>
+
+                     <div class="media-item full-width">
+                        <span class="exhibit-label">Exhibit C — Video</span>
+                        <video controls>
+                            <source src="../videos/blog/PishachaCrawl1.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                        <div class="capture-info">
+                            Surveillance Footage // On-Body Camera // Note: Audio removed — cognitohazard risk. Camera bearer did not survive encounter.
+                        </div>
+                    </div>
+
+                     <div class="media-item full-width">
+                        <span class="exhibit-label">Exhibit D — Video</span>
+                        <video controls>
+                            <source src="../videos/blog/PishachaCrawl2.mp4" type="video/mp4">
+                            Your browser does not support video playback.
+                        </video>
+                        <div class="capture-info">
+                            Surveillance Footage // On-Body Camera // Note: Audio removed — cognitohazard risk. Camera bearer did not survive encounter.
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="back-link">
+            <a href="../blog-content.html">← Back to Blog</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michael Mancino. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
