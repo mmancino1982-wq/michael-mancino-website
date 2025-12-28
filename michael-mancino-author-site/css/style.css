@@ -16,21 +16,23 @@
     --color-medium-gray: #2a2a2a;
     --color-light-gray: #cccccc;
     --color-white: #f5f5f5;
-    --color-accent: #c9a961; /* Gold/amber accent from cover */
+    --color-accent: #c9a961;
+    /* Gold/amber accent from cover */
     --color-accent-dark: #8b7545;
-    --color-blood: #8b1a1a; /* Deep red accent */
-    
+    --color-blood: #8b1a1a;
+    /* Deep red accent */
+
     /* Typography */
     --font-display: 'Bebas Neue', sans-serif;
     --font-body: 'Roboto', sans-serif;
-    
+
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
-    
+
     /* Container */
     --container-max: 1200px;
 }
@@ -142,7 +144,7 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-lg);
-    align-items: center;
+    align-items: start;
 }
 
 .hero-text {
@@ -155,7 +157,56 @@ a:hover {
     letter-spacing: 4px;
     color: var(--color-accent);
     margin-bottom: var(--spacing-sm);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Hero Quote Box */
+.hero-quote-box {
+    background-color: rgba(201, 169, 97, 0.15);
+    border: 2px solid var(--color-accent);
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border-left: 8px solid var(--color-accent);
+    animation: fadeInLeft 1s ease-out;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-quote-text {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-quote-author {
+    font-family: var(--font-display);
+    color: var(--color-accent);
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.hero-author-name {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 0.2rem;
+    line-height: 1.1;
+}
+
+.hero-author-creds {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.8;
+    display: block;
+    text-transform: none;
+    font-family: var(--font-body);
+    font-style: italic;
+    letter-spacing: normal;
 }
 
 .hero-tagline {
@@ -191,7 +242,7 @@ a:hover {
 .book-cover {
     max-width: 500px;
     margin: 0 auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     border: 1px solid var(--color-medium-gray);
 }
 
@@ -346,7 +397,7 @@ a:hover {
     width: 100%;
     max-width: 400px;
     border: 3px solid var(--color-accent);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
 }
 
 .about-text h2 {
@@ -434,7 +485,7 @@ a:hover {
 .book-cover-large img {
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     border: 1px solid var(--color-medium-gray);
     margin-bottom: var(--spacing-md);
 }
@@ -705,6 +756,7 @@ a:hover {
         opacity: 0;
         transform: translateX(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -716,6 +768,7 @@ a:hover {
         opacity: 0;
         transform: translateX(50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -724,6 +777,7 @@ a:hover {
 
 /* === RESPONSIVE === */
 @media (max-width: 968px) {
+
     .hero-content,
     .teaser-grid,
     .about-grid,
@@ -732,11 +786,11 @@ a:hover {
     .footer-content {
         grid-template-columns: 1fr;
     }
-    
+
     .hero-title {
         font-size: 3rem;
     }
-    
+
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -746,18 +800,18 @@ a:hover {
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0,0,0,0.9);
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.9);
         padding: var(--spacing-md) 0;
     }
-    
+
     .nav-menu.active {
         left: 0;
     }
-    
+
     .hamburger {
         display: flex;
     }
-    
+
     .background-grid {
         grid-template-columns: 1fr;
     }
@@ -767,16 +821,17 @@ a:hover {
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .hero-cta {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
         text-align: center;
     }
 }
+
 .countdown-container {
     text-align: left;
     margin-bottom: 2rem;

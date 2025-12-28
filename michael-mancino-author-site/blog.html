@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog - BROKEN CREED</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         .blog-header {
             background: linear-gradient(135deg, var(--color-dark-gray) 0%, var(--color-black) 100%);
@@ -126,26 +128,27 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
-    <div class="container">
-        <div class="nav-brand">MICHAEL MANCINO</div>
-        <ul class="nav-menu" id="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="book.html">The Book</a></li>
-            <li><a href="arc-signup.html">ARC Readers</a></li>
-            <li><a href="index.html#newsletter">Newsletter</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="container">
+            <div class="nav-brand">MICHAEL MANCINO</div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="book.html">The Book</a></li>
+
+                <li><a href="index.html#newsletter">Newsletter</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
     <div class="blog-header">
         <div class="container">
             <h1>The Blog</h1>
@@ -159,60 +162,60 @@
             <p style="text-align: center; color: var(--color-light-gray);">Loading posts...</p>
         </div>
 
-      
-           <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 Michael Mancino. All rights reserved.</p>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Michael Mancino. All rights reserved.</p>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 
 
-<script>
-        // Blog posts data (you'll add actual posts here as you create them)
-        const blogPosts = [
-            {
-                date: 'November 15, 2025',
-                title: 'Meet Jonah Creed: The Broken Operator',
-                excerpt: 'Jonah Creed isn\'t your typical protagonist. He\'s not a superhero. He\'s not chosen.',
-                url: 'blog/11-15-25.html'
-            },
-            // Add more posts as you create them
-        
+        <script>
+            // Blog posts data (you'll add actual posts here as you create them)
+            const blogPosts = [
+                {
+                    date: 'November 15, 2025',
+                    title: 'Meet Jonah Creed: The Broken Operator',
+                    excerpt: 'Jonah Creed isn\'t your typical protagonist. He\'s not a superhero. He\'s not chosen.',
+                    url: 'blog/11-15-25.html'
+                },
+                // Add more posts as you create them
 
-             {
-                 date: 'November 17, 2025',
-                 title: 'Hayes: The Loyal Operator with Bro Energy',
-                 excerpt: 'If Jonah is the brain, Hayes is the firepower.',
-                 url: 'blog/11-17-25.html'
-        },
 
-        {
-                 date: 'November 29, 2025',
-                 title: 'INTEL BULLETIN: Pishacha Emergence Surveillance',
-                 excerpt: 'Intel bulletin detailing the emergence patterns and behaviors of the Pishacha entities observed during field operations.',
-                 url: 'blog/11-29-25.html'
-        },
+                {
+                    date: 'November 17, 2025',
+                    title: 'Hayes: The Loyal Operator with Bro Energy',
+                    excerpt: 'If Jonah is the brain, Hayes is the firepower.',
+                    url: 'blog/11-17-25.html'
+                },
 
-         {
-                 date: 'December 2, 2025',
-                 title: 'Entity Dossier: The Guide',
-                 excerpt: 'Classified Network dossier on an ancient entity encountered in transitional spaces. He doesn\'t hunt. He waits.',
-                 url: 'blog/The-Guide.html'
-        }
-    ];
+                {
+                    date: 'November 29, 2025',
+                    title: 'INTEL BULLETIN: Pishacha Emergence Surveillance',
+                    excerpt: 'Intel bulletin detailing the emergence patterns and behaviors of the Pishacha entities observed during field operations.',
+                    url: 'blog/11-29-25.html'
+                },
 
-        // Load blog posts
-        function loadBlogPosts() {
-            const container = document.getElementById('blogPosts');
-            
-            if (blogPosts.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--color-light-gray);">No posts yet. Check back soon!</p>';
-                return;
-            }
+                {
+                    date: 'December 2, 2025',
+                    title: 'Entity Dossier: The Guide',
+                    excerpt: 'Classified Network dossier on an ancient entity encountered in transitional spaces. He doesn\'t hunt. He waits.',
+                    url: 'blog/The-Guide.html'
+                }
+            ];
 
-            container.innerHTML = blogPosts.map(post => `
+            // Load blog posts
+            function loadBlogPosts() {
+                const container = document.getElementById('blogPosts');
+
+                if (blogPosts.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: var(--color-light-gray);">No posts yet. Check back soon!</p>';
+                    return;
+                }
+
+                container.innerHTML = blogPosts.map(post => `
                 <div class="blog-post-card">
                     <div class="post-date">${post.date}</div>
                     <h2 class="post-title">
@@ -222,10 +225,11 @@
                     <a href="${post.url}" class="read-more">Read More</a>
                 </div>
             `).join('');
-        }
+            }
 
-           // Load posts on page load
-        loadBlogPosts();
-    </script>
+            // Load posts on page load
+            loadBlogPosts();
+        </script>
 </body>
+
 </html>
