@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="BROKEN CREED by Michael Mancino - Psychological horror meets military thriller. An IED blast killed Jonah Creed, gave him a tour of Hell, and brought him back marked. Order now for January 1, 2026 launch.">
+        content="BROKEN CREED by Michael Mancino - Psychological horror meets military thriller. An IED blast killed Jonah Creed, gave him a tour of Hell, and brought him back marked. Available now.">
     <meta name="keywords"
         content="psychological horror, military thriller, supernatural fiction, cosmic horror, Iraq war veteran, demonic possession, private investigator, Houston thriller, tactical horror, military horror">
     <meta name="author" content="Michael Mancino">
@@ -19,7 +19,7 @@
     <meta name="twitter:site" content="@MMancinoAuthor">
     <meta name="twitter:title" content="BROKEN CREED - Psychological Horror">
     <meta name="twitter:description"
-        content="An IED blast killed Jonah Creed and gave him a tour of Hell. Now he's back, investigating corporate espionage that spirals into cosmic horror. Launches January 1, 2026.">
+        content="An IED blast killed Jonah Creed and gave him a tour of Hell. Now he's back, investigating corporate espionage that spirals into cosmic horror. Available now.">
     <title>Michael Mancino | Thriller Author & Former Combat Medic</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -268,15 +268,7 @@
                 <div class="hero-text">
 
 
-                    <div class="countdown-container">
-                        <div class="countdown-label">LAUNCHING IN</div>
-                        <div class="countdown-display" id="countdown">
-                            <span id="days">00</span> DAYS :
-                            <span id="hours">00</span> HRS :
-                            <span id="minutes">00</span> MIN
-                        </div>
-                        <div class="countdown-date">January 1, 2026</div>
-                    </div>
+
                     <h1 class="hero-title">BROKEN CREED - Psychological Horror Novel</h1>
                     <p class="hero-tagline">When the darkness you left in a war zone follows you home, the only way
                         forward
@@ -297,7 +289,7 @@
                             </a>
                         </div>
                     </div>
-                    <p class="launch-date">Launches January 1, 2026</p>
+
                 </div>
                 <div class="hero-image">
                     <img src="images/Broken_Creed_Cover_Ebook (1) (1) (1).png" alt="Broken Creed Book Cover"
@@ -309,9 +301,9 @@
     <!-- Newsletter Section (Primary CTA) -->
     <section class="newsletter-section" id="newsletter">
         <div class="container newsletter-container">
-            <h2>Join the Launch List</h2>
-            <p>Get exclusive updates on the Broken Creed launch, behind-the-scenes content about the writing process,
-                and early access to Book 2.</p>
+            <h2>Join the List</h2>
+            <p>Get exclusive updates, behind-the-scenes content about the writing process, and early access to Book 2.
+            </p>
 
             <!-- MAILCHIMP FORM -->
             <div class="newsletter-form">
@@ -414,24 +406,7 @@
     </footer>
 
     <script src="js/script.js"></script>
-    <script>
-        function updateCountdown() {
-            const launchDate = new Date('January 1, 2026 00:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = launchDate - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 60000); // Update every minute
-    </script>
 </body>
 
 </html>
